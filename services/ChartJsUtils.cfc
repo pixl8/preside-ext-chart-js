@@ -35,6 +35,7 @@ component {
 		var config = {
 			  type    = chart.getType()
 			, data    = { datasets=[] }
+			, plugins = [ "PLUGINS_PLACEHOLDER" ]
 			, options = {}
 		};
 
@@ -123,6 +124,12 @@ component {
 			config.options.scales[ scale.id ] = scaleConfig;
 		} );
 
+		// Plugins
+		var plugins = "";
+		chart.getPlugins().each( function( plugin, index ) {
+			plugins = listAppend( plugins, plugin );
+		} );
+
 		// Datasets
 		chart.getDatasets().each( function( srcDataset, index ){
 			var dataset     = Duplicate( srcDataset );
@@ -159,7 +166,17 @@ component {
 		// Apply chart-type-specific options
 		config = chart.applyTypeConfig( config );
 
-		return SerializeJson( config );
+		var serializedConfig = SerializeJson( config );
+
+		serializedConfig = replace( serializedConfig, '"PLUGINS_PLACEHOLDER"', plugins );
+
+		var rawScripts = chart.getRawScripts();
+
+		for ( var id in rawScripts ) {
+			serializedConfig = replace( serializedConfig, '"#id#"', rawScripts[id] );
+		}
+
+		return serializedConfig;
 	}
 
 	public string function render( required Chart chart ) {

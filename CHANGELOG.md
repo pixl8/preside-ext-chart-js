@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.3
+* Enable plugin registration
+* Preserve raw scripts without additional quotes
+
 ## v0.2.2
 
 * Change chart init to callable function
