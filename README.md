@@ -304,13 +304,15 @@ chart.addRawScript( id=formatterId, script=tooltipFormatter )
 
 ```
 
-## Addiing plugin
+## Adding a plugin
 
-Plugin can be added to the chart like this:
+Plugins can be added to the chart like this:
 ```
 chart.addPlugin( "..." );
 ```
 See [Plugins](https://www.chartjs.org/docs/latest/developers/plugins.html) for more details on how to configure plugins.
+
+Note that it is your responsibility to include the plugin's Javascript into the page, most likely by registering it in Sticker.
 
 ## Themes
 
