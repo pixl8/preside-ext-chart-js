@@ -1,6 +1,7 @@
 # Changelog
 
-## v0.2.3
+## v0.3.0
+
 * Enable plugin registration
 * Preserve raw scripts without additional quotes
 
