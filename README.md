@@ -279,6 +279,39 @@ var barChart = newChart( "bar" )
 	.addDataset( label="Set 3", data=[ ... ], stack="stack2" );
 ```
 
+## Tooltip callback
+
+Chart tooltip values can be customised using tooltip callback, for example, to suffix additional text with numerical value on display.
+
+This can be achieved by generating a unique `formatterId` as an ID for the script, assign the actual formatter script with the ID to chart using `.addRawScript()`. Then add the ID to `options.plugins.tooltip.callbacks.label`:
+
+```
+var formatterId = createUUID();
+
+var tooltipFormatter = 'function( context ) { return context.formattedValue + "% p.a."; }';
+.
+.
+chart.addRawScript( id=formatterId, script=tooltipFormatter )
+.setOptions({
+	plugins = {
+		tooltip = {
+			callbacks = {
+				label = formatterId
+			}
+		}
+	}
+});
+
+```
+
+## Addiing plugin
+
+Plugin can be added to the chart like this:
+```
+chart.addPlugin( "..." );
+```
+See [Plugins](https://www.chartjs.org/docs/latest/developers/plugins.html) for more details on how to configure plugins.
+
 ## Themes
 
 Colour themes can be defined in `Config.cfc` and used when rendering a chart. A theme is essentially an array of `backgroundColor` values, and a corresponding array of `borderColor` values.

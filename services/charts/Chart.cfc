@@ -21,6 +21,8 @@ component accessors=true {
 	property name="theme"          type="any"     default="default";
 	property name="colourMode"     type="string"; // 'dataset' or 'datapoint'
 	property name="animation"      type="boolean" default=true;
+	property name="rawScripts"     type="struct";
+	property name="plugins"        type="array";
 	property name="options"        type="struct";
 
 // CONSTRUCTOR
@@ -30,6 +32,8 @@ component accessors=true {
 		setDatasets( [] );
 		setLabels( [] );
 		setScales( [] );
+		setRawScripts( {} );
+		setPlugins( [] );
 		setOptions( {} );
 
 		return this;
@@ -38,6 +42,12 @@ component accessors=true {
 // PUBLIC API METHODS
 	public string function render() {
 		return _getUtils().render( this );
+	}
+
+	public Chart function addPlugin( required string pluginName ) {
+		getPlugins().append( pluginName );
+
+		return this;
 	}
 
 	public Chart function addDataset(
@@ -55,6 +65,12 @@ component accessors=true {
 			"dataset.options.#option#" = options[ option ];
 		}
 		getDatasets().append( dataset );
+
+		return this;
+	}
+
+	public Chart function addRawScript( required string id, required string script ) {
+		getRawScripts().append( { "#arguments.id#" = arguments.script } );
 
 		return this;
 	}
