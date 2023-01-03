@@ -1,7 +1,17 @@
 <cfscript>
-	chart  = args.chart  ?: "";
-	id     = args.id     ?: "";
-	styles = args.styles ?: "";
+	chart     = args.chart  ?: "";
+	id        = args.id     ?: "";
+	styles    = args.styles ?: "";
+	config    = chart.getConfig();
+	callbacks = reMatchNoCase( '"callback":"(.*)}"', config );
+
+	for ( var callback in callbacks ) {
+		var cb = replace( callback, '"callback":', '' );
+
+		if ( len( cb ) ) {
+			config = replace( config, cb, replace( cb, '"', '', 'all') );
+		}
+	}
 </cfscript>
 
 <cfoutput>
@@ -11,7 +21,7 @@
 
 	<script>
 		var #id#
-		  , #id#_config = #chart.getConfig()#
+		  , #id#_config = #config#
 		  , #id#_init   = function() {
 				#id# = new Chart( document.getElementById( '#id#' ), #id#_config );
 		    };
