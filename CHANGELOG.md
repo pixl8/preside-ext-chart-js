@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.1
+
+* Process serialised callbacks
+
 ## v0.3.0
 
 * Enable plugin registration
