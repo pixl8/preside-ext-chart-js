@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.2
+
+* Update build version generator
+
 ## v0.3.1
 
 * Process serialised callbacks
