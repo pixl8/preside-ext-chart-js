@@ -19,7 +19,7 @@
 		<canvas id="#id#" class="chart-canvas"></canvas>
 	</div>
 
-	<script>
+	<script nonce="#event?.getRequestNonce()#">
 		var #id#
 		  , #id#_config = #config#
 		  , #id#_init   = function() {
