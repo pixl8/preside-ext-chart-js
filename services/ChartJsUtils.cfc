@@ -121,7 +121,8 @@ component {
 			scaleConfig.axis         = scale.axis;
 			scaleConfig.grid.display = scale.showGrid;
 
-			config.options.scales[ scale.id ] = scaleConfig;
+			config.options.scales[ scale.id ] = config.options.scales[ scale.id ] ?: {};
+			StructAppend( config.options.scales[ scale.id ], scaleConfig );
 		} );
 
 		// Plugins
