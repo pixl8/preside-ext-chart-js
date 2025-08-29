@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.3
+
+* Support CSP nonce values for later Preside versions
+
 ## v0.3.2
 
 * Update build version generator
