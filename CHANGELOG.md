@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.3.4
+
+* [PXCHARTJS-6](https://projects.pixl8.london/browse/PXCHARTJS-6) - Custom scales options get overwritten
+
 ## v0.3.3
 
 * Support CSP nonce values for later Preside versions
