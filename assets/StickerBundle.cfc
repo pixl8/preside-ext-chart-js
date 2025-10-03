@@ -20,6 +20,8 @@ component output=false {
 
 		bundle.addAsset( id="chartjs", path="/lib/chartjs/3.4.1/chart.min.js" );
 
+		bundle.addAsset( id="chartjs-chart-sankey", path="/lib/chartjs-chart-sankey/0.14.0/chartjs-chart-sankey.min.js" );
+		bundle.asset( "chartjs-chart-sankey" ).after( "chartjs" );
 	}
 
 }
