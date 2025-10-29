@@ -142,6 +142,12 @@ component {
 			if ( chart.getColourMode() == "dataset" ) {
 				dataset.backgroundColor = theme.backgroundColor[ colourIndex ];
 				dataset.borderColor     = theme.borderColor[ colourIndex ];
+			} else if ( chart.getColourMode() == "gradient" ) {
+				dataset.colorFrom = "getColourFromScript";
+				dataset.colorTo   = "getColourToScript";
+
+				chart.addRawScript( id="getColourFromScript", script='( c ) => #SerializeJSON( theme.borderColor )#[ c.dataIndex % #ArrayLen( theme.borderColor )# ]' );
+				chart.addRawScript( id="getColourToScript"  , script='( c ) => #SerializeJSON( theme.borderColor )#[ ( c.dataIndex + 1 ) % #ArrayLen( theme.borderColor )# ]' );
 			} else {
 				dataset.backgroundColor = theme.backgroundColor;
 				dataset.borderColor     = theme.borderColor;
