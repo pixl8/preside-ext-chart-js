@@ -36,7 +36,7 @@ component accessors=true extends="Chart" {
 
 	public struct function applyTypeConfig( required struct config, struct theme={} ) {
 		arguments.config.options.plugins.legend.display = false;
-		arguments.config.options.scales.color           = { missing=getMissingCountryColor() };
+		arguments.config.options.scales.color           = { missing=getMissingCountryColor(), min=0 };
 		arguments.config.options.scales.xy              = { projection=getProjection() };
 
 		if ( !ArrayLen( arguments.config.data.datasets ) ) {
