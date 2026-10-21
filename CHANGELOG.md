@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.0
+
+* Geo chart support
+
 ## v0.3.5
 
 * Support Sankey chart type
